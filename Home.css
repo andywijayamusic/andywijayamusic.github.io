@@ -1,5 +1,5 @@
  .u-section-1 {
-  background-image: url("images/YourBodyCloseTonight.jpg");
+  background-image: url("/images/YourBodyCloseTonight.jpg");
   background-position: 52.81% 50%;
 }
 
@@ -75,7 +75,7 @@
 
 .u-section-2 .u-image-1 {
   min-height: 608px;
-  background-image: url("images/photo_6080034989770126976_y.jpg");
+  background-image: url("/images/photo_6080034989770126976_y.jpg");
   background-position: 50% 50%;
 }
 
@@ -85,7 +85,7 @@
 
 .u-section-2 .u-image-2 {
   min-height: 304px;
-  background-image: url("images/photo_6080034989770126975_y.jpg");
+  background-image: url("/images/photo_6080034989770126975_y.jpg");
   background-position: 50% 50%;
 }
 
