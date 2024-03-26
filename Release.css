@@ -1,0 +1,342 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 50vw;
+}
+
+.u-section-1 .u-btn-1 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 67px auto 0 690px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-image-1 {
+  width: 388px;
+  height: 388px;
+  --radius: 50px;
+  margin: -1px auto 0 158px;
+}
+
+.u-section-1 .u-btn-2 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: -366px 181px 0 auto;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-btn-3 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 21px auto 0 667px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-btn-4 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 21px auto 0 699px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-btn-5 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 21px auto 0 660px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-btn-6 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 21px auto 0 693px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-btn-7 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 21px auto 0 694px;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: 9px auto 0 163px;
+}
+
+.u-section-1 .u-btn-8 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: -45px 183px 0 auto;
+  padding: 10px 100px;
+}
+
+.u-section-1 .u-text-2 {
+  font-size: 0.875rem;
+  --animation-custom_in-translate_x: 0px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 0deg;
+  --animation-custom_in-scale: 0.3;
+  margin: 3px auto 0 211px;
+}
+
+.u-section-1 .u-btn-9 {
+  --radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: 700;
+  font-family: AquireBold-8Ma60;
+  margin: -4px 182px 60px auto;
+  padding: 10px 100px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-btn-1 {
+    margin-left: 582px;
+  }
+
+  .u-section-1 .u-image-1 {
+    margin-left: 64px;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-right: auto;
+    margin-left: 577px;
+  }
+
+  .u-section-1 .u-btn-3 {
+    margin-left: 558px;
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-left: 591px;
+  }
+
+  .u-section-1 .u-btn-5 {
+    margin-left: 552px;
+  }
+
+  .u-section-1 .u-btn-6 {
+    margin-left: 585px;
+  }
+
+  .u-section-1 .u-btn-7 {
+    margin-left: 586px;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: auto;
+    margin-left: 69px;
+  }
+
+  .u-section-1 .u-btn-8 {
+    margin-right: auto;
+    margin-left: 579px;
+  }
+
+  .u-section-1 .u-text-2 {
+    width: auto;
+    margin-left: 117px;
+  }
+
+  .u-section-1 .u-btn-9 {
+    margin-right: auto;
+    margin-left: 579px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 910px;
+  }
+
+  .u-section-1 .u-btn-1 {
+    margin-top: 359px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 235px;
+    height: 235px;
+    margin-top: -381px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-top: 167px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-3 {
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-5 {
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-6 {
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-7 {
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.875rem;
+    margin-top: -524px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-8 {
+    margin-top: 488px;
+    margin-left: 227px;
+  }
+
+  .u-section-1 .u-text-2 {
+    font-size: 0.625rem;
+    width: 202px;
+    margin-top: -530px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-9 {
+    margin-top: 529px;
+    margin-bottom: 20px;
+    margin-left: 227px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 889px;
+  }
+
+  .u-section-1 .u-btn-1 {
+    margin-top: 328px;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 200px;
+    height: 200px;
+    margin-top: -350px;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-top: 171px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.25rem;
+    margin-top: -514px;
+  }
+
+  .u-section-1 .u-btn-8 {
+    margin-top: 503px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: -545px;
+  }
+
+  .u-section-1 .u-btn-9 {
+    margin-top: 543px;
+    margin-left: auto;
+    margin-bottom: 21px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 893px;
+  }
+
+  .u-section-1 .u-btn-1 {
+    margin-top: 20px;
+    margin-left: 42px;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-left: 37px;
+  }
+
+  .u-section-1 .u-btn-3 {
+    margin-left: 19px;
+  }
+
+  .u-section-1 .u-btn-4 {
+    margin-left: 51px;
+  }
+
+  .u-section-1 .u-btn-5 {
+    margin-left: 12px;
+  }
+
+  .u-section-1 .u-btn-6 {
+    margin-left: 45px;
+  }
+
+  .u-section-1 .u-btn-7 {
+    margin-left: 46px;
+  }
+
+  .u-section-1 .u-btn-9 {
+    margin-top: 550px;
+    margin-bottom: -288px;
+  }
+}@font-face {
+  font-family: 'AquireBold-8Ma60';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/AquireBold-8Ma60.otf);
+}
