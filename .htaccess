@@ -1,6 +1,0 @@
-<IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteCond %{REQUESR_FILENAME} !-d
-RewriteCond %{REQUESR_FILENAME}.html !-d
-RewriteRute ^(.*)$ $1.html
-</IfModule>
