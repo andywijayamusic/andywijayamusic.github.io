@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release – Andy Wijaya</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+    }
+
+    /* Background blur dari cover art */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("img/release.jpg") center/cover no-repeat;
+      filter: blur(40px) brightness(0.4);
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 340px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cover {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 22px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.3);
+    }
+
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .links a {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background: rgba(0, 217, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 85%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="cover">
+      <img src="img/release.jpg" alt="Release Cover" />
+    </div>
+
+    <h2>Over The Horizon</h2>
+    <p>by Andy Wijaya</p>
+
+    <div class="links">
+      <a href="#" target="https://open.spotify.com/album/4DXM9MVHPfRN39PShR9Mcp">Spotify</a>
+      <a href="#" target="https://music.apple.com/us/album/over-the-horizon-single/1762831450">Apple Music</a>
+      <a href="#" target="https://music.youtube.com/playlist?list=OLAK5uy_noN1OK1EoOS7zGAJojSfbJbL_iwGw-13w">YouTube Music</a>
+      <a href="#" target="https://soundcloud.com/andywijaya-music/sets/over-the-horizon-215884112">SoundCloud</a>
+    </div>
+  </div>
+</body>
+</html>
