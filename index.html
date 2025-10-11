@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Andy Wijaya — Link in Bio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,106 +13,118 @@
       --glow: #00d9ff;
       --text: #fff;
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    body {
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #111827 0%, #000 100%);
       font-family: 'Inter', sans-serif;
       color: var(--text);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
-      background: radial-gradient(circle at top, #111827 0%, #000 100%);
     }
 
-    /* Animated background */
     body::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 200%; height: 200%;
+      inset: 0;
       background: conic-gradient(from 0deg, #00d9ff33, #111827, #00d9ff33, #000);
       animation: spin 20s linear infinite;
       filter: blur(120px);
       z-index: -1;
-      transform: translate(-25%, -25%);
     }
+
     @keyframes spin {
-      0% { transform: translate(-25%, -25%) rotate(0deg); }
-      100% { transform: translate(-25%, -25%) rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .container::-webkit-scrollbar { display: none; }
 
     .profile-pic {
       width: 110px;
       height: 110px;
       border-radius: 50%;
       border: 3px solid var(--glow);
-      margin-bottom: 16px;
       box-shadow: 0 0 15px var(--glow);
       object-fit: cover;
-      z-index: 2;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
-      margin-bottom: 8px;
       text-align: center;
-      z-index: 2;
+      margin-bottom: 6px;
     }
+
     p.sub {
       color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 32px;
+      font-size: 14px;
+      margin-bottom: 20px;
       text-align: center;
       font-weight: 500;
-      z-index: 2;
     }
 
     .section {
       width: 100%;
-      max-width: 500px;
-      margin: 0 auto 32px auto;
-      padding: 0 16px;
-      z-index: 2;
+      padding: 0 10px;
+      margin-bottom: 24px;
     }
+
     .section h2 {
-      font-size: 16px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-align: center;
     }
 
     .buttons {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
     }
+
     .btn {
       display: flex;
       align-items: center;
-      gap: 12px;
       justify-content: center;
-      padding: 14px 18px;
+      gap: 10px;
+      padding: 12px;
       background: var(--btn-bg);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
+      border-radius: 10px;
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
       transition: all .2s ease;
       position: relative;
-      overflow: hidden;
-      z-index: 2;
+      border: 1px solid rgba(255,255,255,0.05);
     }
+
     .btn::before {
       content: '';
       position: absolute;
@@ -122,12 +134,14 @@
       opacity: 0;
       transition: opacity .3s;
     }
+
     .btn:hover::before { opacity: 1; }
     .btn:hover {
       background: var(--btn-hover);
       box-shadow: 0 0 12px var(--glow);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
+
     .btn i {
       font-size: 18px;
       color: var(--glow);
@@ -135,66 +149,58 @@
 
     footer {
       color: rgba(255, 255, 255, 0.6);
-      font-size: 13px;
+      font-size: 12px;
       text-align: center;
-      margin-top: 20px;
-      font-weight: 500;
-      z-index: 2;
+      margin-bottom: 10px;
     }
 
-    /* 🔥 RESPONSIVE FIX */
     @media (max-width: 600px) {
-      body {
-        padding: 12px;
+      .profile-pic {
+        width: 90px;
+        height: 90px;
       }
       h1 {
         font-size: 22px;
       }
       p.sub {
-        font-size: 14px;
-        margin-bottom: 24px;
-      }
-      .profile-pic {
-        width: 90px;
-        height: 90px;
+        font-size: 13px;
+        margin-bottom: 16px;
       }
       .btn {
-        padding: 12px;
         font-size: 14px;
-      }
-      .section {
-        padding: 0 10px;
-        max-width: 100%;
+        padding: 11px;
       }
     }
   </style>
 </head>
 <body>
-  <img class="profile-pic" id="profilePic" src="https://unavatar.io/youtube/andywijayamusic" alt="Andy Wijaya YouTube Profile" onerror="this.onerror=null;this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=AndyWijaya';" />
-  <h1>Andy Wijaya</h1>
-  <p class="sub">“DJ/Producer in Indonesia, West Borneo, Singkawang City”</p>
+  <div class="container">
+    <img class="profile-pic" src="https://unavatar.io/youtube/andywijayamusic" alt="Andy Wijaya YouTube Profile" onerror="this.onerror=null;this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=AndyWijaya';" />
+    <h1>Andy Wijaya</h1>
+    <p class="sub">DJ/Producer in Indonesia, West Borneo, Singkawang City</p>
 
-  <div class="section">
-    <h2>Music Store</h2>
-    <div class="buttons">
-      <a class="btn" href="https://open.spotify.com/artist/2wAKxWR7A5WAlprOsPZzvG"><i class="fab fa-spotify"></i>Spotify</a>
-      <a class="btn" href="https://youtube.com/c/AndyWijayaMusic"><i class="fab fa-youtube"></i>YouTube</a>
-      <a class="btn" href="https://music.youtube.com/channel/UCCjEH5IajOfN1CU_yifAaLg"><i class="fab fa-youtube"></i>YouTube Music</a>
-      <a class="btn" href="https://soundcloud.com/andywijayamusic"><i class="fab fa-soundcloud"></i>SoundCloud</a>
-      <a class="btn" href="https://www.deezer.com/en/artist/11949409"><i class="fas fa-music"></i>Deezer</a>
-      <a class="btn" href="https://music.apple.com/us/artist/youzerotube/1617047566"><i class="fab fa-apple"></i>Apple Music</a>
+    <div class="section">
+      <h2>Music Store</h2>
+      <div class="buttons">
+        <a class="btn" href="https://open.spotify.com/artist/2wAKxWR7A5WAlprOsPZzvG"><i class="fab fa-spotify"></i>Spotify</a>
+        <a class="btn" href="https://youtube.com/c/AndyWijayaMusic"><i class="fab fa-youtube"></i>YouTube</a>
+        <a class="btn" href="https://music.youtube.com/channel/UCCjEH5IajOfN1CU_yifAaLg"><i class="fab fa-youtube"></i>YouTube Music</a>
+        <a class="btn" href="https://soundcloud.com/andywijayamusic"><i class="fab fa-soundcloud"></i>SoundCloud</a>
+        <a class="btn" href="https://www.deezer.com/en/artist/11949409"><i class="fas fa-music"></i>Deezer</a>
+        <a class="btn" href="https://music.apple.com/us/artist/youzerotube/1617047566"><i class="fab fa-apple"></i>Apple Music</a>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Social Media</h2>
-    <div class="buttons">
-      <a class="btn" href="https://instagram.com/andywijayamusic"><i class="fab fa-instagram"></i>Instagram</a>
-      <a class="btn" href="https://facebook.com/andywijayamusic"><i class="fab fa-facebook"></i>Facebook</a>
-      <a class="btn" href="https://x.com/andywijayamusic"><i class="fab fa-x-twitter"></i>X / Twitter</a>
+    <div class="section">
+      <h2>Social Media</h2>
+      <div class="buttons">
+        <a class="btn" href="https://instagram.com/andywijayamusic"><i class="fab fa-instagram"></i>Instagram</a>
+        <a class="btn" href="https://facebook.com/andywijayamusic"><i class="fab fa-facebook"></i>Facebook</a>
+        <a class="btn" href="https://x.com/andywijayamusic"><i class="fab fa-x-twitter"></i>X / Twitter</a>
+      </div>
     </div>
-  </div>
 
-  <footer>Cieee cuma liat doang, gk di klik.</footer>
+    <footer>Cieee cuma liat doang, gk di klik.</footer>
+  </div>
 </body>
 </html>
