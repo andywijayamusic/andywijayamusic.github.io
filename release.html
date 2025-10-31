@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Over The Horizon | Andy Wijaya</title>
+  <link rel="icon" type="image/png" href="awicon.png" />
   <style>
     * {
       margin: 0;
@@ -13,21 +14,22 @@
     }
 
     body {
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
       background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
       color: white;
+      padding: 20px;
     }
 
     /* Background blur dari cover art */
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       background: url("img/release.jpg") center/cover no-repeat;
       filter: blur(40px) brightness(0.4);
@@ -37,7 +39,8 @@
     .card {
       position: relative;
       z-index: 2;
-      width: 340px;
+      width: 100%;
+      max-width: 340px;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 25px;
       padding: 24px;
@@ -53,8 +56,9 @@
     }
 
     .cover {
-      width: 220px;
-      height: 220px;
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 1 / 1;
       margin: 0 auto 22px;
       border-radius: 20px;
       overflow: hidden;
@@ -69,13 +73,13 @@
     }
 
     h2 {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
     p {
-      font-size: 0.9rem;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
       opacity: 0.8;
       margin-bottom: 18px;
     }
@@ -95,7 +99,7 @@
       color: white;
       background: rgba(255, 255, 255, 0.12);
       box-shadow: 0 0 10px rgba(0, 217, 255, 0);
-      font-size: 0.95rem;
+      font-size: clamp(0.9rem, 2vw, 0.95rem);
       transition: all 0.3s ease;
     }
 
@@ -107,7 +111,8 @@
 
     @media (max-width: 480px) {
       .card {
-        width: 85%;
+        width: 90%;
+        padding: 20px;
       }
     }
   </style>
