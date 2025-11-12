@@ -29,34 +29,45 @@
 
   <!-- 🎧 JSON-LD SCHEMA -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "@id": "https://andywijayamusic.my.id/#artist",
-    "name": "Andy Wijaya",
-    "alternateName": "andywijayamusic",
-    "url": "https://andywijayamusic.my.id",
-    "image": "https://andywijayamusic.my.id/img/profile.jpg",
-    "genre": ["Drum and Bass", "Future Bounce", "Electronic"],
-    "description": "Andy Wijaya adalah DJ dan produser musik elektronik asal Singkawang, Kalimantan Barat.",
-    "foundingDate": "2022",
-    "foundingLocation": { "@type": "Place", "name": "Singkawang, Indonesia" },
-    "keywords": "Andy Wijaya, andywijayamusic, Andy Wijaya Singkawang, Andy Wijaya Naskun, DJ Singkawang, Andy Wijaya Music",
-    "identifier": { "@type": "PropertyValue", "propertyID": "SoundCloud", "value": "andywijayamusic" },
-    "sameAs": [
-      "https://www.instagram.com/andywijayamusic",
-      "https://www.youtube.com/@andywijayamusic",
-      "https://soundcloud.com/andywijayamusic",
-      "https://twitter.com/andywijayamusic",
-      "https://www.facebook.com/andywijayamusic",
-      "https://open.spotify.com/artist/2wAKxWR7A5WAlprOsPZzvG",
-      "https://music.apple.com/us/artist/youzerotube/1617047566",
-      "https://www.deezer.com/us/artist/11949409"
-    },
-    "hasPart": [{
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "@id": "https://andywijayamusic.my.id/#artist",
+  "name": "Andy Wijaya",
+  "alternateName": "andywijayamusic",
+  "url": "https://andywijayamusic.my.id",
+  "image": "https://andywijayamusic.my.id/img/profile.jpg",
+  "genre": ["Drum and Bass", "Future Bounce", "Electronic"],
+  "description": "Andy Wijaya adalah DJ dan produser musik elektronik asal Singkawang, Kalimantan Barat.",
+  "foundingDate": "2022",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Singkawang, Indonesia"
+  },
+  "keywords": "Andy Wijaya, andywijayamusic, Andy Wijaya Singkawang, Andy Wijaya Naskun, DJ Singkawang, Andy Wijaya Music",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "SoundCloud",
+    "value": "andywijayamusic"
+  },
+  "sameAs": [
+    "https://www.instagram.com/andywijayamusic",
+    "https://www.youtube.com/@andywijayamusic",
+    "https://soundcloud.com/andywijayamusic",
+    "https://twitter.com/andywijayamusic",
+    "https://www.facebook.com/andywijayamusic",
+    "https://open.spotify.com/artist/2wAKxWR7A5WAlprOsPZzvG",
+    "https://music.apple.com/us/artist/youzerotube/1617047566",
+    "https://www.deezer.com/us/artist/11949409"
+  ],
+  "hasPart": [
+    {
       "@type": "MusicRecording",
       "name": "Over The Horizon",
-      "inAlbum": "Over The Horizon - Single",
+      "inAlbum": {
+        "@type": "MusicAlbum",
+        "name": "Over The Horizon - Single"
+      },
       "url": "https://andywijayamusic.my.id/release/over-the-horizon",
       "offers": [
         { "@type": "Offer", "url": "https://open.spotify.com/album/4DXM9MVHPfRN39PShR9Mcp", "name": "Spotify" },
@@ -65,9 +76,10 @@
         { "@type": "Offer", "url": "https://music.youtube.com/playlist?list=OLAK5uy_noN1OK1EoOS7zGAJojSfbJbL_iwGw-13w", "name": "YouTube Music" },
         { "@type": "Offer", "url": "https://on.soundcloud.com/9oSfQVLqMU5x1Tpafg", "name": "SoundCloud" }
       ]
-    }]
-  }
-  </script>
+    }
+  ]
+}
+</script>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
