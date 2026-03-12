@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Andy Wijaya | Submission</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+/* THEME */
+
+:root{
+--bg:#0b0b0b;
+--card:#151515;
+--text:white;
+--input:#1f1f1f;
+--accent:#ff5500;
+}
+
+.light{
+--bg:#f6f6f6;
+--card:white;
+--text:#111;
+--input:#eeeeee;
+}
+
+/* BODY */
+
+body{
+background:var(--bg);
+font-family:Arial, Helvetica, sans-serif;
+color:var(--text);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+overflow:hidden;
+transition:.3s;
+}
+
+/* BACKGROUND DARK */
+
+.bg-dark{
+position:absolute;
+width:700px;
+height:700px;
+background:#ff5500;
+filter:blur(220px);
+opacity:.25;
+animation:darkmove 10s infinite alternate;
+z-index:-1;
+}
+
+@keyframes darkmove{
+from{transform:translate(-200px,-150px)}
+to{transform:translate(200px,150px)}
+}
+
+/* BACKGROUND LIGHT */
+
+.bg-light{
+position:absolute;
+width:120%;
+height:120%;
+background:linear-gradient(60deg,#ffd2b8,#ffffff,#ffe5d5);
+opacity:.6;
+filter:blur(120px);
+animation:lightmove 15s infinite alternate;
+z-index:-2;
+}
+
+@keyframes lightmove{
+from{transform:translate(-10%,-10%)}
+to{transform:translate(10%,10%)}
+}
+
+/* TOGGLE */
+
+.theme-switch{
+position:absolute;
+top:20px;
+right:20px;
+width:60px;
+height:30px;
+background:#222;
+border-radius:30px;
+display:flex;
+align-items:center;
+cursor:pointer;
+padding:3px;
+}
+
+.light .theme-switch{background:#ddd}
+
+.switch-circle{
+width:24px;
+height:24px;
+background:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+transition:.3s;
+}
+
+.light .switch-circle{transform:translateX(30px)}
+
+/* CARD */
+
+.box{
+background:var(--card);
+padding:35px;
+border-radius:14px;
+width:380px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+animation:fade .7s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+h2{text-align:center;margin-bottom:25px}
+
+label{
+font-size:13px;
+opacity:.7;
+display:block;
+margin-bottom:4px;
+}
+
+/* INPUT */
+
+input,textarea{
+width:100%;
+padding:11px;
+margin-bottom:14px;
+border:none;
+border-radius:8px;
+background:var(--input);
+color:var(--text);
+font-size:14px;
+outline:none;
+}
+
+textarea{min-height:80px;resize:vertical}
+
+input:focus,textarea:focus{
+box-shadow:0 0 10px var(--accent);
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+background:var(--accent);
+border:none;
+border-radius:8px;
+color:white;
+font-size:15px;
+cursor:pointer;
+font-weight:bold;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-1px);
+box-shadow:0 0 12px var(--accent);
+}
+
+button:disabled{
+opacity:.7;
+cursor:not-allowed;
+}
+
+/* SPINNER */
+
+.spinner{
+width:18px;
+height:18px;
+border:3px solid rgba(255,255,255,.3);
+border-top:3px solid white;
+border-radius:50%;
+animation:spin .7s linear infinite;
+display:inline-block;
+margin-right:6px;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:30px;
+left:50%;
+transform:translateX(-50%) translateY(-20px);
+background:var(--card);
+color:var(--text);
+padding:14px 22px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+opacity:0;
+pointer-events:none;
+transition:.4s;
+}
+
+.popup.show{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
+/* FOOTER */
+
+.footer{
+position:fixed;
+bottom:14px;
+left:50%;
+transform:translateX(-50%);
+font-size:12px;
+opacity:.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-light"></div>
+<div class="bg-dark"></div>
+
+<div class="theme-switch" onclick="toggleTheme()">
+<div class="switch-circle" id="icon">🌙</div>
+</div>
+
+<div class="popup" id="popup">
+✔ Track submitted successfully
+</div>
+
+<div class="box">
+
+<h2>Submit Track</h2>
+
+<label>Artist Name</label>
+<input id="artist">
+
+<label>Track Title</label>
+<input id="title">
+
+<label>SoundCloud Link</label>
+<input id="link">
+
+<label>Short Description</label>
+<textarea id="desc"></textarea>
+
+<button id="submitBtn" onclick="submitTrack()">Submit</button>
+
+</div>
+
+<div class="footer">
+© 2026 Andy Wijaya | Submission
+</div>
+
+<script>
+
+/* THEME */
+
+const icon=document.getElementById("icon")
+
+function toggleTheme(){
+
+document.body.classList.toggle("light")
+
+if(document.body.classList.contains("light")){
+icon.innerHTML="☀️"
+localStorage.setItem("theme","light")
+}else{
+icon.innerHTML="🌙"
+localStorage.setItem("theme","dark")
+}
+
+}
+
+if(localStorage.getItem("theme")=="light"){
+document.body.classList.add("light")
+icon.innerHTML="☀️"
+}
+
+/* SUBMIT */
+
+function submitTrack(){
+
+const artist=document.getElementById("artist").value
+const title=document.getElementById("title").value
+const link=document.getElementById("link").value
+const desc=document.getElementById("desc").value
+
+const button=document.getElementById("submitBtn")
+const popup=document.getElementById("popup")
+
+if(!artist||!title||!link){
+alert("Please fill all required fields")
+return
+}
+
+button.disabled=true
+button.innerHTML='<span class="spinner"></span>Submitting...'
+
+fetch(
+"https://docs.google.com/forms/d/e/1FAIpQLScyUHKbo-JwICldp4T_L3xuSO1PvR-SbF49AcZGDTt0U4hVRg/formResponse",
+{
+method:"POST",
+mode:"no-cors",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+body:
+"entry.111111="+encodeURIComponent(new Date().toLocaleString())+
+"&entry.1939232730="+encodeURIComponent(artist)+
+"&entry.877327303="+encodeURIComponent(title)+
+"&entry.1470126780="+encodeURIComponent(link)+
+"&entry.1952228114="+encodeURIComponent(desc)
+}
+).then(()=>{
+
+document.getElementById("artist").value=""
+document.getElementById("title").value=""
+document.getElementById("link").value=""
+document.getElementById("desc").value=""
+
+button.disabled=false
+button.innerHTML="Submit"
+
+popup.classList.add("show")
+
+setTimeout(()=>{
+popup.classList.remove("show")
+},3000)
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
