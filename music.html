@@ -58,33 +58,40 @@ iframe{
 <div class="container" id="music"></div>
 
 <script>
-const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.soundcloud.com/users/555085773/sounds.rss";
+const rssUrl = "https://feeds.soundcloud.com/users/555085773/sounds.rss";
 
-fetch(rssUrl)
-.then(res => res.json())
+// pakai proxy biar gak ke-block
+const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
+
+fetch(proxy)
+.then(res => res.text())
+.then(str => new DOMParser().parseFromString(str, "text/xml"))
 .then(data => {
 
     const container = document.getElementById("music");
+    const items = data.querySelectorAll("item");
 
-    // DEBUG
-    console.log(data);
-
-    if (!data.items || data.items.length === 0) {
-        container.innerHTML = "<p>Gagal load RSS / kosong</p>";
+    if (!items.length) {
+        container.innerHTML = "<p>RSS kosong / gagal load</p>";
         return;
     }
 
-    data.items.slice(0,6).forEach(item => {
+    items.forEach((item, i) => {
+        if (i >= 6) return;
+
+        const title = item.querySelector("title").textContent;
+        const link = item.querySelector("link").textContent;
+
+        let desc = item.querySelector("description").textContent;
+        let imgMatch = desc.match(/img src="(.*?)"/);
+        let img = imgMatch ? imgMatch[1] : "https://via.placeholder.com/300x300?text=No+Image";
 
         const card = document.createElement("div");
         card.className = "card";
 
-        let img = item.thumbnail || "https://via.placeholder.com/300x300?text=No+Image";
-        let link = item.link;
-
         card.innerHTML = `
             <img src="${img}">
-            <h3>${item.title}</h3>
+            <h3>${title}</h3>
             <iframe 
                 src="https://w.soundcloud.com/player/?url=${link}&color=%23ff5500">
             </iframe>
@@ -96,7 +103,7 @@ fetch(rssUrl)
 })
 .catch(err => {
     console.error(err);
-    document.getElementById("music").innerHTML = "<p>Error ambil data RSS</p>";
+    document.getElementById("music").innerHTML = "<p>Error load RSS</p>";
 });
 </script>
 
