@@ -1,0 +1,42 @@
+<script>
+const rssUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.soundcloud.com/users/555085773/sounds.rss";
+
+fetch(rssUrl)
+.then(res => res.json())
+.then(data => {
+
+    const container = document.getElementById("music");
+
+    // DEBUG
+    console.log(data);
+
+    if (!data.items || data.items.length === 0) {
+        container.innerHTML = "<p>Gagal load RSS / kosong</p>";
+        return;
+    }
+
+    data.items.slice(0,6).forEach(item => {
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        let img = item.thumbnail || "https://via.placeholder.com/300x300?text=No+Image";
+        let link = item.link;
+
+        card.innerHTML = `
+            <img src="${img}">
+            <h3>${item.title}</h3>
+            <iframe 
+                src="https://w.soundcloud.com/player/?url=${link}&color=%23ff5500">
+            </iframe>
+        `;
+
+        container.appendChild(card);
+    });
+
+})
+.catch(err => {
+    console.error(err);
+    document.getElementById("music").innerHTML = "<p>Error ambil data RSS</p>";
+});
+</script>
