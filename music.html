@@ -58,52 +58,26 @@ iframe{
 <div class="container" id="music"></div>
 
 <script>
-const rssUrl = "https://feeds.soundcloud.com/users/555085773/sounds.rss";
+const container = document.getElementById("music");
 
-// pakai proxy biar gak ke-block
-const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
+// list lagu manual dari SoundCloud lu
+const tracks = [
+    "https://soundcloud.com/andywijaya/track-1",
+    "https://soundcloud.com/andywijaya/track-2",
+    "https://soundcloud.com/andywijaya/track-3"
+];
 
-fetch(proxy)
-.then(res => res.text())
-.then(str => new DOMParser().parseFromString(str, "text/xml"))
-.then(data => {
+tracks.forEach(link => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-    const container = document.getElementById("music");
-    const items = data.querySelectorAll("item");
+    card.innerHTML = `
+        <iframe 
+            src="https://w.soundcloud.com/player/?url=${link}&color=%23ff5500">
+        </iframe>
+    `;
 
-    if (!items.length) {
-        container.innerHTML = "<p>RSS kosong / gagal load</p>";
-        return;
-    }
-
-    items.forEach((item, i) => {
-        if (i >= 6) return;
-
-        const title = item.querySelector("title").textContent;
-        const link = item.querySelector("link").textContent;
-
-        let desc = item.querySelector("description").textContent;
-        let imgMatch = desc.match(/img src="(.*?)"/);
-        let img = imgMatch ? imgMatch[1] : "https://via.placeholder.com/300x300?text=No+Image";
-
-        const card = document.createElement("div");
-        card.className = "card";
-
-        card.innerHTML = `
-            <img src="${img}">
-            <h3>${title}</h3>
-            <iframe 
-                src="https://w.soundcloud.com/player/?url=${link}&color=%23ff5500">
-            </iframe>
-        `;
-
-        container.appendChild(card);
-    });
-
-})
-.catch(err => {
-    console.error(err);
-    document.getElementById("music").innerHTML = "<p>Error load RSS</p>";
+    container.appendChild(card);
 });
 </script>
 
