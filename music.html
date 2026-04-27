@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Andy Wijaya | Music</title>
+
+<!-- FAVICON -->
+<link rel="icon" href="img/awicon.png">
+
+<style>
+:root {
+  --bg: #0d0d0d;
+  --card: rgba(255,255,255,0.05);
+  --text: #fff;
+}
+
+/* ===== BACKGROUND ANIMASI ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text);
+  padding: 12px;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(29,185,84,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,0,0.12), transparent 40%),
+    #0d0d0d;
+
+  background-size: 200% 200%;
+  animation: bgMove 12s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.logo-home img {
+  height: 22px;
+  opacity: .9;
+  transition: .3s;
+}
+.logo-home:hover img {
+  transform: scale(1.08);
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+/* card */
+.song {
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .25s;
+  position: relative;
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 6px rgba(255,255,255,0.03); }
+  50% { box-shadow: 0 0 14px rgba(255,255,255,0.08); }
+}
+
+.song:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(30,215,96,0.4);
+}
+
+.song img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.song-info {
+  padding: 5px;
+  text-align: center;
+}
+
+.song-info h3 {
+  font-size: 10px;
+  margin: 0;
+}
+
+.song-info p {
+  font-size: 9px;
+  opacity: .6;
+}
+
+/* NEW */
+.song.new::after {
+  content: "NEW";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 7px;
+  padding: 2px 5px;
+  background: #1DB954;
+  color: #000;
+  border-radius: 5px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  backdrop-filter: blur(6px);
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  width: 90%;
+  max-width: 270px;
+  background: rgba(20,20,20,0.95);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  transform: scale(.85);
+  animation: popupIn .3s forwards;
+}
+
+@keyframes popupIn {
+  to { transform: scale(1); }
+}
+
+/* STORE BUTTON */
+.store {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.store img {
+  width: 16px;
+}
+
+.store:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.spotify:hover { box-shadow: 0 0 12px #1DB954; }
+.apple:hover { box-shadow: 0 0 12px #aaa; }
+.amazonmusic:hover { box-shadow: 0 0 12px #00A8E1; }
+.deezer:hover { box-shadow: 0 0 12px #A238FF; }
+.tidal:hover { box-shadow: 0 0 12px #fff; }
+.amazon:hover { box-shadow: 0 0 12px #FF9900; }
+.youtube:hover { box-shadow: 0 0 12px #FF0000; }
+
+.close {
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: .6;
+  cursor: pointer;
+}
+
+/* responsive */
+@media(max-width:500px){
+  .grid { grid-template-columns: repeat(3,1fr); }
+}
+@media(max-width:350px){
+  .grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <a href="http://andywijayamusic.my.id/" class="logo-home">
+    <img src="img/AW.png">
+  </a>
+</div>
+
+<div class="grid" id="musicGrid"></div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modalTitle"></h3>
+    <div id="modalLinks"></div>
+    <div class="close" onclick="closeModal()">Tutup</div>
+  </div>
+</div>
+
+<script>
+const icons = {
+  "Spotify": "https://cdn.simpleicons.org/spotify",
+  "Apple": "https://cdn.simpleicons.org/applemusic",
+  "Amazon Music": "https://upload.wikimedia.org/wikipedia/commons/9/92/Amazon_Music_logo.svg",
+  "Deezer": "https://cdn.simpleicons.org/deezer",
+  "TIDAL": "https://cdn.simpleicons.org/tidal",
+  "Amazon": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  "YouTube Music": "https://cdn.simpleicons.org/youtubemusic"
+};
+
+/* ===== DATA LAGU ===== */
+const songs = [
+{
+  title: "City",
+  date: "27-04-2026",
+  cover: "img/release.jpg",
+  new: true,
+  links: {
+    Spotify: "https://open.spotify.com/album/0GG52bfz4fIEucfKfHoYrB",
+    Apple: "https://music.apple.com/id/album/city-single/1893635856",
+    "Amazon Music": "https://music.amazon.com/albums/B0GX5XYSD8",
+    Deezer: "https://www.deezer.com/us/album/961086781",
+    TIDAL: "https://tidal.com/album/515751678",
+    Amazon: "https://www.amazon.com/music/player/albums/B0GX5XYSD8",
+    "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_mEVmqW0uVUqoD3_z-xqkq32rnbRhVMGoM"
+  }
+},
+{
+  title: "Garry Ey, Andy Wijaya - Hey Mamacita",
+  date: "27-02-2026",
+  cover: "img/preview.jpg",
+  new: false, // Fales/true hidupkan label NEW
+  links: {
+    Spotify: "https://open.spotify.com/track/0uUBd3Xxmnc1lxjzMOkC2e",
+    Apple: "https://music.apple.com/id/song/hey-mamacita/1879762729",
+    "Amazon Music": "https://music.amazon.com/albums/B0GPQBFQY2",
+    Deezer: "https://www.deezer.com/us/album/925216331",
+    TIDAL: "https://tidal.com/album/501304366",
+    Amazon: "https://www.amazon.com/dp/B0GPQBFQY2",
+    "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_mfqzw7DPj_2pjx4qPg58QLA4y6x5HScx8"
+  }
+},
+{
+  title: "Garry Ey, Andy Wijaya - TRAP TRAPPED ( Album )",
+  date: "31-03-2026",
+  cover: "img/album.jpeg",
+  new: false, // Fales/true hidupkan label NEW
+  links: {
+    Spotify: "https://open.spotify.com/album/6KDiaYOe3aZHfkiSIArM7p",
+    Apple: "https://music.apple.com/id/album/trap-trapped/1888149908",
+    "Amazon Music": "https://music.amazon.com/albums/B0GTWHXPTW",
+    Deezer: "https://www.deezer.com/us/album/947118271",
+    TIDAL: "https://tidal.com/album/509982917",
+    Amazon: "https://www.amazon.com/music/player/albums/B0GTWHXPTW",
+    "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_mWKtZPun2FliDS2_aAgtjsrCzi5N7Y_ZU"
+  }
+},
+];
+
+/* render */
+const grid = document.getElementById("musicGrid");
+
+songs.forEach(song=>{
+  const el = document.createElement("div");
+  el.className = "song " + (song.new ? "new" : "");
+  el.innerHTML = `
+    <img src="${song.cover}">
+    <div class="song-info">
+      <h3>${song.title}</h3>
+      <p>${song.date}</p>
+    </div>
+  `;
+  el.onclick = ()=>openModal(song);
+  grid.appendChild(el);
+});
+
+function openModal(song){
+  document.getElementById("modal").classList.add("active");
+  document.getElementById("modalTitle").innerText = song.title;
+
+  const linksDiv = document.getElementById("modalLinks");
+  linksDiv.innerHTML = "";
+
+  for(let name in song.links){
+    const a = document.createElement("a");
+    a.href = song.links[name];
+    a.target = "_blank";
+    a.className = "store";
+
+    a.innerHTML = `<img src="${icons[name] || ''}">${name}`;
+    linksDiv.appendChild(a);
+  }
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+
+document.addEventListener("click", e=>{
+  if(e.target.id === "modal") closeModal();
+});
+</script>
+
+</body>
+</html>

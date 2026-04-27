@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andywijayamusic.my.id/sitemap.xml
