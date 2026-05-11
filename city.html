@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andy Wijaya | City</title>
+
+<style>
+:root {
+  --bg-overlay: rgba(0,0,0,0.5);
+  --card-bg: rgba(255,255,255,0.08);
+  --text: #fff;
+  --subtext: rgba(255,255,255,0.7);
+  --btn-bg: rgba(255,255,255,0.1);
+  --btn-hover: rgba(255,255,255,0.2);
+}
+
+body.light {
+  --bg-overlay: rgba(255,255,255,0.6);
+  --card-bg: rgba(255,255,255,0.75);
+  --text: #111;
+  --subtext: rgba(0,0,0,0.6);
+  --btn-bg: rgba(0,0,0,0.05);
+  --btn-hover: rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://andywijayamusic.my.id/img/release.jpg') center/cover no-repeat;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(25px) brightness(0.7);
+  transform: scale(1.2);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay);
+  z-index: -1;
+}
+
+/* ===== HEADER HOME ===== */
+.header {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.home-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--btn-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.home-btn img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* toggle */
+.toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 46px;
+  height: 24px;
+  border-radius: 20px;
+  background: var(--btn-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+
+.toggle::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text);
+  transition: .3s;
+}
+
+body.light .toggle::after {
+  transform: translateX(22px);
+}
+
+/* card */
+.card {
+  width: 90%;
+  max-width: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+/* cover */
+.cover {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: url('https://andywijayamusic.my.id/img/release.jpg') center/cover;
+}
+
+/* info */
+.info {
+  text-align: center;
+  padding: 8px;
+  color: var(--text);
+}
+
+.info h2 {
+  font-size: 16px;
+}
+
+.info p {
+  font-size: 11px;
+  color: var(--subtext);
+}
+
+/* grid */
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px;
+}
+
+/* button */
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--btn-bg);
+  padding: 10px 6px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 11px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.link img {
+  width: 20px;
+  height: 20px;
+}
+
+/* glow */
+.spotify:hover { box-shadow: 0 0 12px #1DB954; }
+.apple:hover { box-shadow: 0 0 12px #aaa; }
+.amazonmusic:hover { box-shadow: 0 0 12px #00A8E1; }
+.deezer:hover { box-shadow: 0 0 12px #A238FF; }
+.tidal:hover { box-shadow: 0 0 12px #fff; }
+.amazon:hover { box-shadow: 0 0 12px #FF9900; }
+.youtube:hover { box-shadow: 0 0 12px #FF0000; }
+
+/* footer */
+.footer {
+  text-align: center;
+  font-size: 10px;
+  padding: 6px;
+  color: var(--subtext);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="https://andywijayamusic.my.id/" class="home-btn">
+    <img src="img/AW.png">
+  </a>
+</div>
+
+<div class="toggle" onclick="toggleMode()"></div>
+
+<div class="card">
+  <div class="cover"></div>
+
+  <div class="info">
+    <h2>City</h2>
+    <p>Andy Wijaya</p>
+  </div>
+
+  <div class="links">
+
+    <a href="https://open.spotify.com/album/0GG52bfz4fIEucfKfHoYrB" class="link spotify" onclick="openApp(event,'spotify:album:0GG52bfz4fIEucfKfHoYrB')">
+      <img src="https://cdn.simpleicons.org/spotify">
+      Spotify
+    </a>
+
+    <a href="https://music.apple.com/id/album/city-single/1893635856" class="link apple">
+      <img src="https://cdn.simpleicons.org/applemusic">
+      Apple Music
+    </a>
+
+    <a href="https://music.amazon.com/albums/B0GX61C5GR" class="link amazonmusic">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Amazon_Music_logo.svg">
+      Amazon Music
+    </a>
+
+    <a href="https://www.deezer.com/us/album/961086781" class="link deezer">
+      <img src="https://cdn.simpleicons.org/deezer">
+      Deezer
+    </a>
+
+    <a href="https://tidal.com/album/515751678" class="link tidal">
+      <img src="https://cdn.simpleicons.org/tidal">
+      TIDAL
+    </a>
+
+    <a href="https://www.amazon.com/dp/B0GX61C5GR" class="link amazon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+      Amazon
+    </a>
+
+    <a href="https://music.youtube.com/playlist?list=OLAK5uy_mEVmqW0uVUqoD3_z-xqkq32rnbRhVMGoM" class="link youtube">
+      <img src="https://cdn.simpleicons.org/youtubemusic">
+      YouTube Music
+    </a>
+
+  </div>
+
+  <div class="footer">
+    © Copyright 2026
+  </div>
+</div>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+function openApp(e, appLink) {
+  e.preventDefault();
+  window.location = appLink;
+  setTimeout(() => {
+    window.location = e.currentTarget.href;
+  }, 800);
+}
+</script>
+
+</body>
+</html>
